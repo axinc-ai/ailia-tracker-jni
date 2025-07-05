@@ -29,8 +29,8 @@ class AiliaTracker(
         return addTarget(tracker, category, prob, x, y, w, h)
     }
 
-    fun compute(imageWidth: Int, imageHeight: Int): Int {
-        return compute(tracker, imageWidth, imageHeight)
+    fun compute(threshold: Float, iou: Float): Int {
+        return compute(tracker, threshold, iou)
     }
 
     fun getObjectCount(): Int {
@@ -54,7 +54,7 @@ class AiliaTracker(
     private external fun create(algorithm: Int, flags: Int): Long
     private external fun destroy(tracker: Long)
     private external fun addTarget(tracker: Long, category: Int, prob: Float, x: Float, y: Float, w: Float, h: Float): Int
-    private external fun compute(tracker: Long, imageWidth: Int, imageHeight: Int): Int
+    private external fun compute(tracker: Long, threshold: Float, iou: Float): Int
     private external fun getObjectCount(tracker: Long): Int
     private external fun getObject(tracker: Long, index: Int, obj: AiliaTrackerObject)
     private external fun getErrorDetail(tracker: Long): String?
